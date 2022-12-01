@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		//Funciones puras: Una función pura es aquella que, dada una misma entrada, siempre regresa el mismo valor de salida y no tiene otro efecto secundario observable.
+
+		//Las funciones siempre devuelven el mismo tipo y, dados los mismos argumentos, devuelven el mismo valor, lo que las hace predecibles.
+		
+		/*
+		mutar datos.
+		modificar archivos.
+		insertar un registro en una base de datos.
+		hacer una llamada http.
+		*/
+
+
+		//función impura:
+
+		let valor = 5;
+
+		function incrementar(){
+			return valor += 1;
+		}
+
+		incrementar();
+		console.log(valor);
+		console.log(incrementar()); 
+
+		//versión casi pura:
+
+		/*let valor = 5;
+
+		function incrementar(){
+			return valor + 1;
+		}
+
+		incrementar();
+		console.log(valor);
+		console.log(incrementar());
+		console.log(incrementar());
+		console.log(incrementar());*/
+
+
+		//versión pura:
+
+		/*let valor = 5;
+
+		function incrementar(num){
+			return num + 1;
+		}
+
+		incrementar(valor);
+		console.log(valor);
+		console.log(incrementar(valor));
+		console.log(incrementar(valor));
+		console.log(incrementar(valor));*/
+
+		//ejemplo no pura
+
+		console.log(Date.now());
+		console.log(Math.random());
+
+		//ejemplo pura
+
+		console.log([1,2].map(val => val*2));
+
+		
+
+
+
+		/*
+		Son más fácilmente testeables, ya que van a retornar el mismo resultado a partir de los mismos parámetros.
+		Pueden ser cacheadas, ya que siempre retornan el mismo resultado podemos almacenar estos resultados en cache (memoizar)
+		Más faciles de entender: Se puede reemplazar la función por su valor de resultado, lo que las hace referencialmente transparentes.
+		Se pueden ejecutar en paralelo, ya que no tienen ninguna dependencia externa.
+		Reduce la cantidad de bugs, ya que no generan alteraciones del estado externo.
+		Si no se utiliza el resultado de una expresión pura, se puede eliminar sin afectar a otras expresiones.
+		*/
+
+		
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		//Inmutabilidad: los valores no deben cambiar luego de que han sido definidos. Esto permite la persistencia de los datos y evita efectos secundarios que pueden generar la mutación
+
+		//ejemplo de mutación:
+
+		function cambiarResidencia(persona, nuevaCiudad){
+			let copia = Object.assign({}, persona, { cuidad: nuevaCiudad});
+			//persona.cuidad = nuevaCiudad;
+			return copia;
+		}
+
+		const persona = {
+			nombre: 'Robin',
+			cuidad: 'Dublín'
+		}
+
+		let nuevaPersona = cambiarResidencia(persona, 'Montreal');
+
+		console.log(persona);
+
+		console.log(nuevaPersona);
+
+		/*
+		const arr = new Array(1,2,3,4,5);
+		
+		const arr2 = arr.map(valor => valor*2);
+		console.log(arr2);
+		
+		const arr3 = arr.filter(valor => valor >= 3);
+		console.log(arr3);
+
+		console.log(arr);
+		*/
+
+	</script>
+
+</body>
+</html>

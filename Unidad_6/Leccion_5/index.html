@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		function estrella (str) { return str + '⭐'; }
+		function feliz (str) { return str + '😄'; }
+		function triste (str) { return str + '😔'; }
+		function reir (str) {return str + '😂'}
+		function exclamacion (str) { return str + "!"; }
+
+		console.log(reir(exclamacion('Eso fué gracioso')));
+
+		function crearComposicion(f1, f2){
+			return function(texto){
+				return f1(f2(texto))
+			}
+		}
+
+		const muyFeliz = crearComposicion(feliz, estrella);
+		let frase1 = muyFeliz('Hoy es un buen día!');
+
+		const muyTriste = crearComposicion(triste, exclamacion);
+		let frase2 = muyTriste('Lo siento');
+
+		const reirMucho = crearComposicion(feliz, estrella);
+		let frase3 = reirMucho('Hoy es un buen día!');
+
+		console.log(frase1);
+		console.log(frase2);
+		console.log(frase3);
+		
+	</script>
+
+</body>
+</html>

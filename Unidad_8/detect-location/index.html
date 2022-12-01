@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script>
+
+      // Código debe ser ejecutado desde un servidor:
+      
+      function mostrarNombrePais(latitude,longitude){
+
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true&key=';
+
+        fetch(url, {
+          headers: this.getHeaders()
+        })
+        .then((response)=>{
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
+          return response;
+        })
+        .then(response =>{
+          return response.json();
+        }).then(data =>{
+          var address = data.results[0];
+          let el = address.formatted_address.split(', ');
+          let node = document.createElement('h1');
+          node.textContent = 'Tú estas en '+el[el.length - 1]
+          document.body.appendChild(node);
+        })
+        .catch(error=>{
+          console.log('Request falló', error);
+        }); 
+      };
+
+      var mostrarNombrePais = function(position){
+        var x = position.coordinadas.latitude;
+        var y = position.coordinadas.longitude;
+        console.log(x, y);
+        displayLocation(x,y);
+      };
+
+      var errorCallback = function(error){
+        throw new Error('No es posible acceder a las coordenadas del usuario');
+      };
+
+      navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+
+    </script>
+  </body>
+</html>

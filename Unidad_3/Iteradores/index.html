@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		const arr = new Array(1,2,3,4,5,6,7);
+		
+
+		for (let val of arr) 
+			console.log(val);
+
+		const iterable = arr[Symbol.iterator]();
+
+
+		/*let libros = {
+		  categorias: {
+		    drama: ['Sensatez y Sentimientos', 'Ana Karenina', 'Orgullo y Prejuicio'],
+		    cienciaFiccion: ['Los robot del amanecer', 'Fundación', 'Segunda Fundación']
+		 }*/
+
+let libros = {
+  categorias: {
+    drama: ['Sensatez y Sentimientos', 'Ana Karenina', 'Orgullo y Prejuicio'],
+    cienciaFiccion: ['Los robot del amanecer', 'Fundación', 'Segunda Fundación']
+  },
+ 
+  [Symbol.iterator]() {
+    let categoriasLibros = Object.values(this.categorias);
+    let indiceDrama = 0;
+    let indiceFiccion = 0;
+    return {
+      next() {
+        if (indiceDrama >= categoriasLibros[indiceFiccion].length) {
+          indiceFiccion++;
+          indiceDrama = 0;
+        }
+ 
+        if (indiceFiccion >= categoriasLibros.length) {
+          return { value: undefined, done: true };
+        }
+ 
+        return {
+          value: categoriasLibros[indiceFiccion][indiceDrama++],
+          done: false
+        };
+      }
+    };
+  }
+};
+
+for (let libro of libros){
+  console.log(libro); 
+}
+	
+	</script>
+
+</body>
+</html>

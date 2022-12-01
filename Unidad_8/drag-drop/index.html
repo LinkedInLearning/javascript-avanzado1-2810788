@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		.target{
+			width: 100px;
+		  	height: 100px;
+		  	padding: 10px;
+		  	border: 2px solid #424242;
+		  	border-radius: 5px;
+		  	display: inline-block;
+		}
+
+		#el-draggable{
+			width: 100px;
+			height: 100px;
+			background-color: #6D4C41;
+		}
+
+		span{
+			color: #FFFFFF;
+			font-weight: bold;
+			padding: 5px;
+			font-family: Arial;
+		}
+
+	</style>
+</head>
+<body>
+
+<div class="target"></div>
+<div class="target"></div>
+<div class="target"></div>
+<div class="target"></div>
+<br>
+
+<div id="el-draggable" draggable="true"></div>
+
+<script type="text/javascript">
+
+	const targets = document.getElementsByClassName("target"); //HTMLCollection
+	document.getElementById("el-draggable").addEventListener('dragstart', empiezaArrastre); 
+
+	for (var i=0, j = targets.length; i<j; i++) {
+	  	targets[i].addEventListener('dragover', permiteColocacion);
+	  	targets[i].addEventListener('dragleave', removerColor);
+		targets[i].addEventListener('drop', colocacion);
+	}
+
+	function removerColor(event){
+		console.log(event)
+		event.currentTarget.style.background = "#FFFFFF";
+	}
+	
+	function permiteColocacion(event) {
+		event.currentTarget.style.background = "#FFF9C4";
+		event.preventDefault();
+	}
+
+	function empiezaArrastre(event) {
+		event.dataTransfer.setData("text", event.target.id);
+	}
+
+	function colocacion(event) {
+		event.preventDefault();
+		var data = event.dataTransfer.getData("text");
+		event.target.appendChild(document.getElementById(data));
+	}
+
+	</script>
+
+</body>
+</html>

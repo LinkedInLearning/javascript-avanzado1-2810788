@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//Recordemos que en Javascript las funciones son objetos de primera clase ya que ellas son objetos en si
+
+		const func = new function(){}
+
+		function miFunction(foo){
+			foo();
+		}
+
+		miFunction(func);
+
+		/*
+
+		Una función de orden superior no es más que cualquier función que cumpla por lo menos una de las siguientes condiciones:
+		Recibe una función como argumento
+		Retorna una función
+		*/
+
+		Promise.resolve(5).then(val=>{
+			console.log(val);
+		});
+
+		document.getElementById('boton').addEventListener('click', function(event){
+			console.log(event);
+		})
+
+		setTimeout(function(){}, 0);
+
+		//aplicacion parcial:  is the act of applying some, but not all, of the arguments to a function and returning a new function awaiting the rest of the arguments
+
+		function crearSaludo(saludo){
+			return function(nombre){
+				console.log(`${saludo} ${nombre}`);
+			}
+		}
+
+		let saludoMannana = crearSaludo('Buenos días!');
+		saludoTemprano('Eleanor');
+
+		let saludoTarde = crearSaludo('Buenos tardes!');
+		saludoTarde('Jorge');
+		saludoTarde('Lucía');
+
+
+
+
+	</script>
+
+</body>
+</html>

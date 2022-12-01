@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//arrays:
+
+		const [primerElemento, ...resto] = ['a', 'b', 'c'];
+		console.log('Valor del primer elemento: ',primerElemento);
+		console.log('El resto del arreglo: ', resto);
+
+
+		const arr = [1,2,3,4];
+		const temp = [...arr, 5];
+		console.log(temp);
+
+		//funciones que retornan arreglos:
+
+		const [all, anno, mes, dia] = /^(\d\d\d\d)-(\d\d)-(\d\d)$/.exec('2019-10-31');
+		console.log(all, anno, mes, dia);
+
+		//Accesar valores en un Set o un Map:
+
+		var objetoSet = new Set().add(1).add(2);
+		const [x,y] = objetoSet;
+
+		console.log(x, y);
+
+		//
+
+		var objetoMap = new Map().set(11, 'primer valor').set(22, 'segundo valor');
+		const [i,j] = objetoMap;
+		console.log(i, j);
+
+		for (const [key, valor] of objetoMap) {
+		  console.log(key + ' es ' + valor);
+		}
+
+		//Como parámetros de una función
+
+		function nombreCompleto({nombre: x = 'Fulano', apellido: y = 'De tal'} = {}){
+			console.log(x + ' '+ y);
+		}
+
+		nombreCompleto({});
+
+		nombreCompleto({nombre: 'Natalia', apellido: 'Corea'});
+
+		nombreCompleto({nombre: 'Natalia'});
+		
+
+
+	</script>
+
+</body>
+</html>

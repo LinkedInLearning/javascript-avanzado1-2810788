@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		const target = {
+			
+			render(val, tag){
+				
+				let htmlTag = document.getElementsByTagName(tag)[0];
+				
+				if(!htmlTag){
+					htmlTag = document.createElement(tag);
+					document.body.appendChild(htmlTag);
+				}
+
+				htmlTag.textContent = val;
+			}
+		};
+
+		const handler = {
+			set(target, prop, value) {
+				
+				target[prop] = value;
+				
+				target.render(value, prop == 'titulo'? 'h1' : 'p');
+			 }
+		}
+
+		const miProxy = new Proxy(target, handler);
+		miProxy.titulo = 'Robots del Amanecer';
+
+		//
+
+		let fecha = new Date();
+		const miProxyFecha = new Proxy(fecha, {
+			get: function( target, prop, proxy ){
+				if(prop == 'format'){
+					return `${target.getDate()}/${target.getMonth()}/${target.getFullYear()}`
+				}else{
+					return target[prop]
+				}
+			}
+		});
+
+		//
+
+		const proxyDatos = new Proxy({}, {
+			set(target, prop, value) {
+				if(prop == 'edad' && !Number.isInteger(value)){
+					throw new Error('El valor de edad no es válido');
+				}
+
+				if(prop == 'fecha' && !/^(0?[1-9]|1[0-2])[\/](0?[1-9]|[12]\d|3[01])[\/](19|20)\d{2}$/.test(value)){
+					throw new Error('El valor de fecha no es válido');
+				}
+
+				return target[prop] = value;
+			}
+		});
+
+		
+		
+	</script>
+
+</body>
+</html>

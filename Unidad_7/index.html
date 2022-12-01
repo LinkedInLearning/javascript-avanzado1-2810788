@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    class RequestsHandler {
+      constructor() {
+        this.url = 'https://us-central1-restful-test-257520.cloudfunctions.net/rest-api-example-2';
+        this.color = 'color: purple;';
+        this.green = 'background: green; color: white; display: block;';
+        this.red = 'background: red; color: white; display: block;';
+      }
+      getHeaders() {
+        return {
+          "Content-type": "application/json"
+        }
+      }
+      hacerRequest(request, params, tipoRequest) {
+
+        return new Promise((resolve, reject) => {
+          console.log('%c enviando request con los parámetros =>', this.color, params);
+          fetch(this.url + (request | ''), {
+            headers: this.getHeaders(),
+            method: tipoRequest,
+            body: tipoRequest !== 'GET' ? JSON.stringify(params) : null
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw Error(response.statusText);
+              }
+              return response;
+            })
+            .then(response => {
+              return response.json();
+            }).then(data => {
+              console.log('%c datos recibidos =>', this.green, data);
+              resolve(data);
+            })
+            .catch(error => {
+              console.log('%c Request falló', this.red, error);
+              reject(new Error(error));
+            });
+        });
+      }
+    }
+
+    const requestsHandler = new RequestsHandler();
+
+    // Método GET:
+    requestsHandler.hacerRequest(null, {}, 'GET').then(datos => {
+      console.log(datos);
+    });
+
+    // Método POST:
+    requestsHandler.hacerRequest(null, {
+      libro: {
+        nombre: 'Fundación',
+        autor: 'Issac Asimov',
+      }
+    }, 'POST').then(datos => {
+      console.log(datos);
+    });
+
+
+    // Método PUT:
+    requestsHandler.hacerRequest(null, {
+      libro: {
+        id: '1',
+        nombre: 'Fundación',
+        autor: 'Issac Asimov',
+      }
+    }, 'POST').then(datos => {
+      console.log(datos);
+    });
+
+    // Método DELETE:
+    requestsHandler.hacerRequest(null, {
+      libro: { id: '1'} }, 'DELETE').then(datos => {
+      console.log(datos);
+    });
+
+  </script>
+
+</body>
+
+</html>

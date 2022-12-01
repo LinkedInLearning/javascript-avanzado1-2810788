@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//encadenamiento:
+
+		//Promise.then retorna un objeto Promise
+
+		//throw new Error('un error ha sucedido :(')
+
+		const promesa = new Promise((resolve, reject)=>{
+			setTimeout(resolve, 500, 5);
+		});
+
+		promesa.then(primerValor=>{
+			console.log('El primer valor es: ', primerValor);
+			return primerValor * primerValor
+		}).then(segundoValor=>{
+			console.log('El segundo valor es: ', segundoValor);
+			return segundoValor * segundoValor;
+		}).then(tercerValor=>{
+			console.log('El tercer valor es: ', tercerValor);
+		}).catch(error=>{
+			console.log(error);
+		})
+
+
+		/*promesa.then(primerValor=>{
+			console.log('El primer valor es: ', primerValor);
+			return promesa
+		}).then(segundoValor=>{
+			console.log('El segundo valor es: ', segundoValor);
+			return promesa
+		}).then(tercerValor=>{
+			console.log('El tercer valor es: ', tercerValor);
+		}).catch(error=>{
+			console.log(error);
+		})*/
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//programacion funcional es un paradigma de programacion. Los paradigmas son maneras en que nosotros podemos estructurar el codigo de una aplicacion. Los paradigmas mas conocidos son OOO, programacion por procedimientos el que generalmente utilizamos para escribir codigo en JS y el funcional
+
+		//En los ultimos años el paradigma funcional se ha vuelto muy popular ya que permite crear código más legible o expresivo. Tambien la ejecución del código es más predecible por lo que nos ayuda a evitar bugs indeseables y dificiles de detectar
+
+		//JS no es un lenguaje funcional en si pero si cumple ciertos requerimientos que nos permiten aplicar principios funcionales en el codigo
+		
+		//Aqui te presento un ejemplo de codigo procesal y uno funcional
+
+		//no funcional:
+
+		let val = 10;
+
+		function sumar(){
+			return val + 1;
+		}
+
+		let temp = sumar();
+
+		//funcional:
+		
+		let val = 10;
+
+		function sumar(num){
+			return num + 1;
+		}
+
+		let temp = sumar(val);
+
+		/*
+		Uso de Funciones Puras (dados los mismos inputs siempre retorna lo mismo, y sin efectos secundarios)
+		Composición de Funciones
+		Evitar el estado compartido
+		Evitar estado cambiante (inmutabilidad)
+		*/
+
+	</script>
+
+</body>
+</html>

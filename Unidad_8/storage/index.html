@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		//Guardar datos
+
+		localStorage.setItem('nombre', 'Natalia Corea');
+		sessionStorage.setItem('ciudad', 'Dublín');
+
+		//Recuperar datos
+
+		let nombre = localStorage.getItem('nombre');
+		let cuidad = sessionStorage.getItem('ciudad');
+
+		console.log(`${nombre} vive en ${cuidad}`);
+
+		//Eliminar datos
+
+		localStorage.removeItem('nombre');
+		sessionStorage.removeItem('ciudad');
+
+		localStorage.clear();
+		sessionStorage.clear();
+
+		let nombreOtravez = localStorage.getItem('nombre');
+		console.log(`Ahora nombre es ${nombreOtravez}`);
+
+
+	</script>
+</body>
+</html>

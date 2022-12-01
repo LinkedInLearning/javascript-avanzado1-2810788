@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+	var libro = {titulo: "Fundación", autor: "Issac Asimov", genero: "Ciencia Ficción", numeroPaginas: 255};
+
+    var titulo = libro.titulo;
+    var autor = libro.autor;
+    var genero = libro.genero; 
+
+    //
+    var {titulo, autor, genero} = libro;
+
+    console.log(titulo, autor, genero);
+
+    //
+
+    var {titulo: prop, autor: pro2} = libro;
+
+    console.log(prop, pro2);
+
+    //
+
+    var {titulo, autor, ...otros} = libro;
+
+    console.log(titulo, autor, otros);
+
+    //
+
+    var key = "titulo";
+    
+    var {[key] : val} = libro;
+
+    console.log(val);
+
+    ///
+
+    let libros = {
+    	categorias: {
+    		drama: ['Sensatez y Sentimientos', 'Ana Karenina', 'Orgullo y Prejuicio'],
+		    cienciaFiccion: ['Los robot del amanecer', 'Fundación', 'Segunda Fundación']
+		}
+	}
+
+	var { 
+		categorias:{
+			drama: a,
+			cienciaFiccion: b}
+	} = libros;
+
+console.log(a, b);
+
+
+		
+	</script>
+
+</body>
+</html>

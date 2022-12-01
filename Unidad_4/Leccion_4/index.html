@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		const target = {
+			titulo: "Fundación", 
+			autor: "Issac Asimov", 
+			genero: "Ciencia Ficción", 
+			numeroPaginas: 255
+		};
+
+		const handler = {
+			get: function(target, prop, proxy) {
+			    if (prop === 'numeroPaginas') {
+			      return `Tengo ${target[prop]} páginas!`;
+			    } else {
+			      return prop;
+			    }
+			  },
+			  set(target, prop, value) {
+			    if (prop === 'titulo' || prop == 'autor') {
+			      console.log(`No puedes modificar la propiedad ${prop}`);
+			    } else {
+			      target[prop] = value;
+			    }
+			 },
+			 deleteProperty(target, prop) {
+			 	throw Error('No está permitido eliminar propiedades de este objeto!')
+			 	return;
+			 }
+		}
+
+		const {proxy:miProxy, revoke} = Proxy.revocable(target, handler);
+
+		console.log(miProxy.titulo);
+		console.log(miProxy.numeroPaginas);
+
+		revoke();
+
+		miProxy.titulo = 'Un título nuevo';
+
+		
+		
+	</script>
+
+</body>
+</html>
