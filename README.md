@@ -20,7 +20,6 @@ Cada carpeta en el directorio raíz corresponde a una unidad del curso y cada un
    - Un editor de código ([VS Code](https://code.visualstudio.com/) es recomendado)
 
 2. Clona este repositorio en tu máquina local usando la Terminal (macOS) o CMD (Windows), o una herramienta GUI como SourceTree.
-3. [Instrucciones específicas del curso].
 
 ### Docente
 
