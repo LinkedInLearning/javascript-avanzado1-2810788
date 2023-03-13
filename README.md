@@ -2,7 +2,7 @@
 
 Este es el repositorio del curso de LinkedIn Learning `[JavaScript Avanzado 1]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
 
-![image](https://user-images.githubusercontent.com/71371373/202446341-bc91f055-71ea-452c-97ed-bc84f9494c0c.png)
+![COURSENAME][lil-thumbnail-url] 
 
 Consulta el archivo Readme en la rama main para obtener instrucciones e información actualizadas.
 
@@ -29,6 +29,6 @@ Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.c
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 [lil-course-url]: https://www.linkedin.com/learning/javascript-avanzado-1/que-vas-a-aprender-en-este-curso-de-javascript-avanzado
-[lil-thumbnail-url]: https://cdn.lynda.com/course/2875095/2875095-1615224395432-16x9.jpg
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2810788/2810788-1627913192731-16x9.jpg
 
 [1]: # (End of ES-Instruction ###############################################################################################)
